@@ -9,3 +9,5 @@ If they're no longer in the yard, it will add the truck to the processedTrucks.t
 The truck name is added to an excel spreadsheet along with the current time to keep track of what time the truck left the yard.
 This project was much more complex than the TruckYardTracking project as this project had to keep track of much more variables.
 It's also very useful to us as it helps us ensure that the times the drivers are reporting on their punch ins are accurate.
+
+I found it pretty easy to reuse this code to track other locations. It would have been easy to add on to this code, but just making a copy and changing the Lat and Lon cordinates was more quick and more simple.
