@@ -20,6 +20,13 @@ if (date("Hi")< "0015")// reset processed list
     fwrite($fp, "");
     fclose($fp);
     echo "Cleared Processed";
+
+    $inputFileName = __DIR__.'\trucksLeavingYard.xlsx';
+    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
+    $spreadsheet->removeSheetByIndex(0);
+
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('trucksLeavingYard.xlsx');
 }
 #endregion
 
@@ -136,7 +143,7 @@ foreach ($allTrucks as $singleTruck)
 {
     if (in_array($singleTruck->getTruckName(), $arraydiff))
     {
-        if (($singleTruck->getLat() > 43.71472 || $singleTruck->getLat() < 43.71139) && ($singleTruck->getLon() < -79.58769 || $singleTruck->getLon() > -79.58176))
+        if (($singleTruck->getLat() > 43.71100 || $singleTruck->getLat() < 43.71500) && ($singleTruck->getLon() < -79.58770 || $singleTruck->getLon() > -79.58176))
         {
             insertTruckIntoSpreadsheet($spreadsheet, $singleTruck);
             echo $singleTruck->getTruckName() . ", ";
