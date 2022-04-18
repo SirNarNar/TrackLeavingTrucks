@@ -1,6 +1,8 @@
 <?php
+// make this use our timezone
 date_default_timezone_set('America/Toronto');
-require '********\Composer\vendor\autoload.php';
+// import everything we need
+require '**************\Composer\vendor\autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -44,9 +46,9 @@ class Truck
 $trucksInYard = array();
 $searchCriteria = "{\"vehicleName\": \"ALL\"}";
 
-$division = '********';
-$apiKey = '********';
-$url = '********' . $division . '********';
+$division = '*********';
+$apiKey = '***************';
+$url = '*********************' . $division . '****************';
 $headers = array();
 $headers[] = 'Content-Type: application/json';
 $headers[] = 'Accept: application/json';
@@ -115,13 +117,6 @@ if (date("Hi")< "0015")// reset daily truck list
     $fp = fopen(__DIR__ .'/trucksInYardAllDay.txt', 'w');
     fwrite($fp, $trucksInYardAM);  
     fclose($fp);
-
-    $inputFileName = __DIR__.'\trucksLeavingYard.xlsx';
-    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
-    $spreadsheet->removeSheetByIndex(0);
-
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('trucksLeavingYard.xlsx');
 }
 #endregion
 
@@ -139,8 +134,8 @@ else
     foreach($trucksInYard as $truck)
     {
             
-        if (($truck->getLat() >= "43.71100" && $truck->getLat() <= "43.71400") &&
-        (($truck->getLon() >= "-79.58600" && $truck->getLon() <= "-79.58100")))
+        if (($truck->getLat() >= "43.71100" && $truck->getLat() <= "43.71500") &&
+        (($truck->getLon() >= "-79.58770" && $truck->getLon() <= "-79.58100")))
             {
                 array_push($trucksInYardSTRINGs, $truck->getTruckName());
             }
